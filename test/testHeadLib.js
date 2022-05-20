@@ -5,4 +5,8 @@ describe('head', () => {
   it('Should give the 1 line back', () => {
     assert.strictEqual(head('hello'), 'hello');
   });
+
+  it('Should give the 2 lines back', () => {
+    assert.strictEqual(head('hello\nbye'), 'hello\nbye');
+  });
 });

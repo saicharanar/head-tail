@@ -2,8 +2,7 @@ const splitLines = (lines) => lines.split('\n');
 const joinLines = (lines) => lines.join('\n');
 
 const linesUpTo = (lines, linesCount) => {
-  const linesLimit = Math.min(lines.length, linesCount);
-  return lines.slice(0, linesLimit);
+  return lines.slice(0, linesCount);
 };
 
 const head = (lines, { linesCount }) => {

@@ -2,6 +2,10 @@ const assert = require('assert');
 const { head, linesUpTo } = require('../src/head.js');
 
 describe('head', () => {
+  it('Should give the empty line back', () => {
+    assert.strictEqual(head('', { linesCount: 10 }), '');
+  });
+
   it('Should give the 1 line back', () => {
     assert.strictEqual(head('hello', { linesCount: 10 }), 'hello');
   });
@@ -23,11 +27,20 @@ describe('head', () => {
     );
   });
 
-  it('Should give upto 2 lines', () => {
-    assert.strictEqual(head('hello\nwow\nwhew', {
-      linesCount: 2
-    }), 'hello\nwow');
+  describe('Increment', () => {
+    it('Should give upto 2 lines', () => {
+      assert.strictEqual(head('hello\nwow\nwhew', {
+        linesCount: 2
+      }), 'hello\nwow');
+    });
+
+    it('Should give upto 1 line when 1 line given and lineCount of 2  ', () => {
+      assert.strictEqual(head('hello', {
+        linesCount: 2
+      }), 'hello');
+    });
   });
+
 });
 
 describe('linesUpto', () => {

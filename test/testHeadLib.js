@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { head, linesUpTo } = require('../src/headLib.js');
+const { head, linesUpTo, charactersUpTo } = require('../src/headLib.js');
 
 describe('head', () => {
   it('Should give the empty line back', () => {
@@ -27,7 +27,7 @@ describe('head', () => {
     );
   });
 
-  describe('Increment', () => {
+  describe('linesCount', () => {
     it('Should give upto 2 lines', () => {
       assert.strictEqual(head('hello\nwow\nwhew', {
         linesCount: 2
@@ -64,3 +64,22 @@ describe('linesUpto', () => {
       'hello\nwow');
   });
 });
+
+describe('charactersUpTo', () => {
+  it('Should give the character back when count 1', () => {
+    assert.strictEqual(charactersUpTo('h', 1), 'h');
+  });
+
+  it('Should give two characters when count 2', () => {
+    assert.strictEqual(charactersUpTo('he', 2), 'he');
+  });
+
+  it('Should give one character when count 1 and content >1', () => {
+    assert.strictEqual(charactersUpTo('he', 1), 'h');
+  });
+
+  it('Should give the whiteSpaces back', () => {
+    assert.strictEqual(charactersUpTo('\nh', 1), '\n');
+  });
+});
+

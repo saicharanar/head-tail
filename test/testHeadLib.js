@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { head } = require('../src/head.js');
+const { head, getLines } = require('../src/head.js');
 
 describe('head', () => {
   it('Should give the 1 line back', () => {
@@ -22,3 +22,20 @@ describe('head', () => {
     );
   });
 });
+
+describe('getLines', () => {
+  it('Should give the line back', () => {
+    assert.deepStrictEqual(getLines(['hello']), ['hello']);
+  });
+
+  it('Should give the 2 lines back', () => {
+    assert.deepStrictEqual(getLines(['hello', 'bye']), ['hello', 'bye']);
+  });
+
+  it('Should only give 10 lines back', () => {
+    assert.deepStrictEqual(
+      getLines(['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd', 'bye']),
+      ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']);
+  });
+});
+

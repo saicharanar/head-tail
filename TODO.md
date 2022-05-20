@@ -3,9 +3,17 @@
 
 **TODO**
 
-- [ ] Implement `head -n lineNumber` 
-- [ ] Refactor head (can abstract the loop).
+- [ ] Refactor head .
+  - [x] Extracted the for loop
+  - [ ] Consider alternative for `for` loop
+- [ ] Implement `head -n lineCount` 
+- [ ] Make the lineCount default as 10
 - [ ] Think about how to accept options.
+
+**MAYBE**
+
+- [ ] Consider is 'getLines' a good function name?
+- [ ] Consider changing `linesToShow` variable name.
 
 **DONE**
 

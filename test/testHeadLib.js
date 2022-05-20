@@ -32,25 +32,22 @@ describe('head', () => {
 
 describe('linesUpto', () => {
   it('Should give the line back', () => {
-    assert.deepStrictEqual(linesUpTo(['hello'], { linesCount: 10 }), ['hello']);
+    assert.deepStrictEqual(linesUpTo(['hello'], 10), ['hello']);
   });
 
   it('Should give the 2 lines back', () => {
-    assert.deepStrictEqual(linesUpTo(['hello', 'bye'], { linesCount: 10 }),
+    assert.deepStrictEqual(linesUpTo(['hello', 'bye'], 10),
       ['hello', 'bye']);
   });
 
   it('Should only give 10 lines back', () => {
     assert.deepStrictEqual(
-      linesUpTo(['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd', 'bye'], {
-        linesCount: 10
-      }),
+      linesUpTo(['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd', 'bye'], 10),
       ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']);
   });
 
   it('Should give upto 2 lines', () => {
-    assert.deepStrictEqual(linesUpTo(['hello', 'wow', 'whew'], {
-      linesCount: 2
-    }), ['hello', 'wow']);
+    assert.deepStrictEqual(linesUpTo(['hello', 'wow', 'whew'], 2),
+      ['hello', 'wow']);
   });
 });

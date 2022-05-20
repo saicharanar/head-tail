@@ -3,19 +3,19 @@
 
 **TODO**
 
-- [ ] Implement options using object
 - [ ] Implement `head -c characters`
 - [ ] Make the lineCount default as 10
 - [ ] Think about how to accept options.
 
 **MAYBE**
 
-- [ ] Consider is 'getLines' a good function name?
-- [ ] Consider changing `linesToShow` variable name.
 - [ ] Consider separating the tests.
 
 **DONE**
 
+- [x] Implement options using object
+- [x] Consider is 'getLines' a good function name?
+- [x] Consider changing `linesToShow` variable name.
 - [x] Refactor head .
   - [x] Extracted the for loop
   - [x] Consider alternative for `for` loop

@@ -15,6 +15,14 @@ const head = (lines, { linesCount, charCount }) => {
   return charactersUpTo(lines, charCount);
 };
 
+const headMain = (readFile, ...content) => {
+  const fileName = content[content.length - 1];
+  const options = { linesCount: 10, charCount: undefined };
+  const fileContent = readFile(fileName, 'utf8');
+  return head(fileContent, options);
+};
+
 exports.head = head;
+exports.headMain = headMain;
 exports.linesUpTo = linesUpTo;
 exports.charactersUpTo = charactersUpTo;

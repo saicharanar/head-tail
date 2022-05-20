@@ -6,12 +6,13 @@ const linesUpTo = (lines, linesCount) => {
   return joinLines(allLines.slice(0, linesCount));
 };
 
-const charactersUpTo = (lines, charactersCount) =>
-  lines.slice(0, charactersCount);
+const charactersUpTo = (lines, charCount) => lines.slice(0, charCount);
 
-const head = (lines, { linesCount }) => {
-  const linesToShow = linesUpTo(lines, linesCount);
-  return linesToShow;
+const head = (lines, { linesCount, charCount }) => {
+  if (linesCount) {
+    return linesUpTo(lines, linesCount);
+  }
+  return charactersUpTo(lines, charCount);
 };
 
 exports.head = head;

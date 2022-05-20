@@ -3,19 +3,24 @@
 
 **TODO**
 
-- [ ] Implement `head -c characters`
 - [ ] Write main file and test main
   - [ ] make the default values in main.
   - [ ] need to parse the option (if accepts)
 - [ ] Implement the command line interface
 - [ ] Think about how to accept options.
+- [ ] Implement `--help` option
+- [ ] Separate tests as per categories
+- [ ] Move the split and join to stringUtils.js
 
 **MAYBE**
 
 - [ ] Consider separating the tests.
+- [ ] Consider changing name of `actionToPerform`
+- [ ] Consider different approach instead of deciding actions using ternary.
 
 **DONE**
 
+- [x] Implement `head -c characters`
 - [x] Change the contract of `linesUpTo` by taking the content itself
 - [x] Implement options using object
 - [x] Consider is 'getLines' a good function name?

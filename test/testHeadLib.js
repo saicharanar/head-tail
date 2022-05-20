@@ -1,28 +1,35 @@
 const assert = require('assert');
-const { head, linesUpTo, charactersUpTo } = require('../src/headLib.js');
+const {
+  head, linesUpTo, charactersUpTo } = require('../src/headLib.js');
 
 describe('head', () => {
   it('Should give the empty line back', () => {
-    assert.strictEqual(head('', { linesCount: 10 }), '');
+    assert.strictEqual(head('', { linesCount: 10, charCount: undefined }), '');
   });
 
   it('Should give the 1 line back', () => {
-    assert.strictEqual(head('hello', { linesCount: 10 }), 'hello');
+    assert.strictEqual(head(
+      'hello',
+      { linesCount: 10, charCount: undefined }), 'hello'
+    );
   });
 
   it('Should give the 2 lines back', () => {
-    assert.strictEqual(head('hello\nbye', { linesCount: 10 }), 'hello\nbye');
+    assert.strictEqual(head('hello\nbye', {
+      linesCount: 10, charCount: undefined
+    }), 'hello\nbye');
   });
 
   it('Should give the lines back when less than 10', () => {
-    assert.strictEqual(head('hello\nbye\nworld\na', { linesCount: 10 }),
-      'hello\nbye\nworld\na'
+    assert.strictEqual(head('hello\nbye\nworld\na', {
+      linesCount: 10, charCount: undefined
+    }), 'hello\nbye\nworld\na'
     );
   });
 
   it('Should lines upto 10 only when lines are >10', () => {
     assert.strictEqual(head('h\ne\nl\nl\no\nw\no\nr\nl\nd\nbye', {
-      linesCount: 10
+      linesCount: 10, charCount: undefined
     }), 'h\ne\nl\nl\no\nw\no\nr\nl\nd'
     );
   });
@@ -30,14 +37,30 @@ describe('head', () => {
   describe('linesCount', () => {
     it('Should give upto 2 lines', () => {
       assert.strictEqual(head('hello\nwow\nwhew', {
-        linesCount: 2
+        linesCount: 2, charCount: undefined
       }), 'hello\nwow');
     });
 
     it('Should give upto 1 line when 1 line given and lineCount of 2  ', () => {
       assert.strictEqual(head('hello', {
-        linesCount: 2
+        linesCount: 2, charCount: undefined
       }), 'hello');
+    });
+  });
+
+  describe('charCount', () => {
+    it('Should give the given character back when count is 1', () => {
+      assert.strictEqual(
+        head('h', { linesCount: undefined, charCount: 1 }),
+        'h'
+      );
+    });
+
+    it('Should give 2 characters back when count is 2', () => {
+      assert.strictEqual(
+        head('he', { linesCount: undefined, charCount: 2 }),
+        'he'
+      );
     });
   });
 
@@ -82,4 +105,3 @@ describe('charactersUpTo', () => {
     assert.strictEqual(charactersUpTo('\nh', 1), '\n');
   });
 });
-

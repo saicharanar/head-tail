@@ -5,9 +5,6 @@
 
 - [ ] Implement options using object
 - [ ] Implement `head -c characters`
-- [ ] Refactor head .
-  - [x] Extracted the for loop
-  - [ ] Consider alternative for `for` loop
 - [ ] Make the lineCount default as 10
 - [ ] Think about how to accept options.
 
@@ -19,6 +16,9 @@
 
 **DONE**
 
+- [x] Refactor head .
+  - [x] Extracted the for loop
+  - [x] Consider alternative for `for` loop
 - [x] Implement `head -n lineCount` 
 - [x] Implement `head without options`
   - [x] Implement head for a single line.

@@ -20,6 +20,7 @@
   - head -c bytes
 
     * Specifies the number of character to display in the firstLine
-    * Can only show a single line
+    * Can go up to any lines until the eof.
+    * white spaces also considered as a character `('\n && \t')`
     * Cannot be merged with -n
 

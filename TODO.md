@@ -1,6 +1,9 @@
 **TODO**
 
-- [ ] Check if the master branch is the one taking commits.
-- [ ] Check if any information leftOut in contract of `head`
+- [ ] Make the directory structure of src and test
+- [ ] Verify mocha existence
 
 **DONE**
+
+- [x] Reinvestigate `head` for any leftOut information
+- [x] Check if the master branch is the one taking commits.

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { head, linesUpTo } = require('../src/head.js');
+const { head, linesUpTo } = require('../src/headLib.js');
 
 describe('head', () => {
   it('Should give the empty line back', () => {
@@ -45,22 +45,22 @@ describe('head', () => {
 
 describe('linesUpto', () => {
   it('Should give the line back', () => {
-    assert.deepStrictEqual(linesUpTo(['hello'], 10), ['hello']);
+    assert.deepStrictEqual(linesUpTo('hello', 10), 'hello');
   });
 
   it('Should give the 2 lines back', () => {
-    assert.deepStrictEqual(linesUpTo(['hello', 'bye'], 10),
-      ['hello', 'bye']);
+    assert.deepStrictEqual(linesUpTo('hello\nbye', 10),
+      'hello\nbye');
   });
 
   it('Should only give 10 lines back', () => {
     assert.deepStrictEqual(
-      linesUpTo(['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd', 'bye'], 10),
-      ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']);
+      linesUpTo('h\ne\nl\nl\no\nw\no\nr\nl\nd\nbye', 10),
+      'h\ne\nl\nl\no\nw\no\nr\nl\nd');
   });
 
   it('Should give upto 2 lines', () => {
-    assert.deepStrictEqual(linesUpTo(['hello', 'wow', 'whew'], 2),
-      ['hello', 'wow']);
+    assert.deepStrictEqual(linesUpTo('hello\nwow\nwhew', 2),
+      'hello\nwow');
   });
 });

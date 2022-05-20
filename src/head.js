@@ -1,3 +1,15 @@
-const head = (lines) => lines;
+const splitLines = (lines) => lines.split('\n');
+const joinLines = (lines) => lines.join('\n');
+
+const head = (lines) => {
+  const splittedLines = splitLines(lines);
+  const linesToShow = [];
+
+  for (let index = 0; index < splittedLines.length && index < 10; index++) {
+    linesToShow.push(splittedLines[index]);
+  }
+
+  return joinLines(linesToShow);
+};
 
 exports.head = head;

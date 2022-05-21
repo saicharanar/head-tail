@@ -23,8 +23,16 @@ const headMain = (readFile, ...content) => {
   }
 
   const { files, options } = parseOptions(...content);
-  const fileContent = readFile(files[0], 'utf8');
-  return head(fileContent, options);
+  return files.map((file) => {
+    let fileContent = '';
+    try {
+      fileContent = readFile(file, 'utf8');
+    } catch (error) {
+      throw { name: 'FileReadError', message: 'error reading file' };
+    }
+
+    return head(fileContent, options);
+  }).join('\n\n');
 };
 
 exports.head = head;

@@ -1,6 +1,3 @@
-**MUST**
-- [ ] Pause and rethink and don't rush.
-
 **TODO**
 
 - [ ] Implement parseOptions
@@ -8,10 +5,11 @@
   - [x] Report if both options given
   - [ ] Report if wrong option given
   - [ ] Report if no count is given
+- [ ] Refactor the parse function
 - [ ] Write main file and test main
   - [x] make the default values in main.
   - [x] need to parse the option (if accepts)
-  - [ ] make it work for multiple files.
+  - [x] make it work for multiple files.
 - [ ] Implement `--help` option
 - [ ] Move the split and join to stringUtils.js
 

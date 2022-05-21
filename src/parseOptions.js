@@ -68,7 +68,7 @@ const optionsObject = (option, count, files) => {
 
 const parseOptions = (...content) => {
   checkValidators(content);
-  
+
   if (noOptionGiven(content)) {
     return optionsObject('-n', 10, content);
   }

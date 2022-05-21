@@ -3,10 +3,13 @@
 
 **TODO**
 
+- [ ] Change the parser to loop from regex.
+- [ ] Change the head contract to accept the option.
 - [ ] Implement parseOptions
   - [x] Report if no value given with option
   - [x] Report if both options given
   - [ ] Report if wrong option given
+  - [ ] Report if no count is given
 - [ ] Write main file and test main
   - [ ] make the default values in main.
   - [x] need to parse the option (if accepts)
@@ -14,6 +17,7 @@
 - [ ] Implement `--help` option
 - [ ] Separate tests as per categories
 - [ ] Move the split and join to stringUtils.js
+
 
 **MAYBE**
 

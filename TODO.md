@@ -3,9 +3,14 @@
 
 **TODO**
 
+- [ ] Implement parseOptions
+  - [x] Report if no value given with option
+  - [x] Report if both options given
+  - [ ] Report if wrong option given
 - [ ] Write main file and test main
   - [ ] make the default values in main.
-  - [ ] need to parse the option (if accepts)
+  - [x] need to parse the option (if accepts)
+  - [ ] make it work for multiple files.
 - [ ] Implement `--help` option
 - [ ] Separate tests as per categories
 - [ ] Move the split and join to stringUtils.js

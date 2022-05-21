@@ -1,3 +1,5 @@
+const { parseOptions } = require('./parseOptions.js');
+
 const splitLines = (lines) => lines.split('\n');
 const joinLines = (lines) => lines.join('\n');
 
@@ -9,16 +11,15 @@ const linesUpTo = (lines, linesCount) => {
 const charactersUpTo = (lines, charCount) => lines.slice(0, charCount);
 
 const head = (lines, { linesCount, charCount }) => {
-  if (linesCount) {
-    return linesUpTo(lines, linesCount);
+  if (charCount) {
+    return charactersUpTo(lines, charCount);
   }
-  return charactersUpTo(lines, charCount);
+  return linesUpTo(lines, linesCount);
 };
 
 const headMain = (readFile, ...content) => {
-  const fileName = content[content.length - 1];
-  const options = { linesCount: 10, charCount: undefined };
-  const fileContent = readFile(fileName, 'utf8');
+  const { files, options } = parseOptions(content);
+  const fileContent = readFile(files[0], 'utf8');
   return head(fileContent, options);
 };
 

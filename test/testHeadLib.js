@@ -51,14 +51,14 @@ describe('head', () => {
   describe('charCount', () => {
     it('Should give the given character back when count is 1', () => {
       assert.strictEqual(
-        head('h', { linesCount: undefined, charCount: 1 }),
+        head('h', { linesCount: 10, charCount: 1 }),
         'h'
       );
     });
 
     it('Should give 2 characters back when count is 2', () => {
       assert.strictEqual(
-        head('he', { linesCount: undefined, charCount: 2 }),
+        head('he', { linesCount: 10, charCount: 2 }),
         'he'
       );
     });

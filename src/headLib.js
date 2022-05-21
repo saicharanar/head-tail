@@ -10,15 +10,19 @@ const linesUpTo = (lines, linesCount) => {
 
 const charactersUpTo = (lines, charCount) => lines.slice(0, charCount);
 
-const head = (lines, { linesCount, charCount }) => {
-  if (charCount) {
-    return charactersUpTo(lines, charCount);
+const head = (lines, { option, count }) => {
+  if (option === '-c') {
+    return charactersUpTo(lines, count);
   }
-  return linesUpTo(lines, linesCount);
+  return linesUpTo(lines, count);
 };
 
 const headMain = (readFile, ...content) => {
-  const { files, options } = parseOptions(content);
+  if (content.length === 0) {
+    return 'usage: head[-n lines | -c bytes][file ...]';
+  }
+
+  const { files, options } = parseOptions(...content);
   const fileContent = readFile(files[0], 'utf8');
   return head(fileContent, options);
 };

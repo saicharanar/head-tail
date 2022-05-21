@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { parseOptions } = require('../src/parseOptions');
 
-describe.only('parsseOptions', () => {
+describe('parsseOptions', () => {
   it('Should give the object of default values when no option given', () => {
     assert.deepStrictEqual(parseOptions(
       'hello'), {
@@ -58,33 +58,27 @@ describe.only('parsseOptions', () => {
     });
   });
 
-  // it('Should throw error when count not provided -n ', () => {
-  //   assert.throws(() => parseOptions('-n', 'hello'), {
-  //     error: 'illegal count'
-  //   });
-  // });
+  it.skip('Should throw error when count not provided -n ', () => {
+    assert.throws(() => parseOptions('-n', 'hello'), {
+      error: 'illegal count'
+    });
+  });
 
-  // it('Should throw error when count not provided -c', () => {
-  //   assert.throws(() => parseOptions('-n', 'hello'), {
-  //     error: 'illegal count'
-  //   });
-  // });
+  it.skip('Should throw error when count not provided -c', () => {
+    assert.throws(() => parseOptions('-n', 'hello'), {
+      error: 'illegal count'
+    });
+  });
 
-  // it('Should throw error when two options provided', () => {
-  //   assert.throws(() => parseOptions('-n', '-c', 'hello'), {
-  //     error: 'Invalid options'
-  //   });
-  // });
+  it('Should throw error when two options provided', () => {
+    assert.throws(() => parseOptions('-n', '-c', 'hello'), {
+      error: 'Invalid options'
+    });
+  });
 
-  // it('Should throw help when help is provided', () => {
-  //   assert.throws(() => parseOptions('-n', '--help', 'hello'), {
-  //     error: 'usage'
-  //   });
-  // });
-
-  // it.skip('Should throw help when wrong option provided', () => {
-  //   assert.throws(() => parseOptions('-d', '', 'hello'), {
-  //     error: 'illegal count'
-  //   });
-  // });
+  it('Should throw help when help is provided', () => {
+    assert.throws(() => parseOptions('-n', '--help', 'hello'), {
+      error: 'usage'
+    });
+  });
 });

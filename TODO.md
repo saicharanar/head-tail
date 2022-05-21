@@ -3,19 +3,16 @@
 
 **TODO**
 
-- [ ] Change the parser to loop from regex.
-- [ ] Change the head contract to accept the option.
 - [ ] Implement parseOptions
   - [x] Report if no value given with option
   - [x] Report if both options given
   - [ ] Report if wrong option given
   - [ ] Report if no count is given
 - [ ] Write main file and test main
-  - [ ] make the default values in main.
+  - [x] make the default values in main.
   - [x] need to parse the option (if accepts)
   - [ ] make it work for multiple files.
 - [ ] Implement `--help` option
-- [ ] Separate tests as per categories
 - [ ] Move the split and join to stringUtils.js
 
 
@@ -25,6 +22,8 @@
 
 **DONE**
 
+- [x] Change the parser to loop from regex.
+- [x] Change the head contract to accept the option.
 - [x] ~~Consider different approach instead of deciding actions using ternary.~~
 - [x] ~~Consider changing name of `actionToPerform`~~
 - [x] Think about how to accept options.

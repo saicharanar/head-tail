@@ -4,32 +4,32 @@ const {
 
 describe('head', () => {
   it('Should give the empty line back', () => {
-    assert.strictEqual(head('', { linesCount: 10, charCount: undefined }), '');
+    assert.strictEqual(head('', { option: '-n', count: 10 }), '');
   });
 
   it('Should give the 1 line back', () => {
     assert.strictEqual(head(
       'hello',
-      { linesCount: 10, charCount: undefined }), 'hello'
+      { option: '-n', count: 10 }), 'hello'
     );
   });
 
   it('Should give the 2 lines back', () => {
     assert.strictEqual(head('hello\nbye', {
-      linesCount: 10, charCount: undefined
+      option: '-n', count: 10
     }), 'hello\nbye');
   });
 
   it('Should give the lines back when less than 10', () => {
     assert.strictEqual(head('hello\nbye\nworld\na', {
-      linesCount: 10, charCount: undefined
+      option: '-n', count: 10
     }), 'hello\nbye\nworld\na'
     );
   });
 
   it('Should lines upto 10 only when lines are >10', () => {
     assert.strictEqual(head('h\ne\nl\nl\no\nw\no\nr\nl\nd\nbye', {
-      linesCount: 10, charCount: undefined
+      option: '-n', count: 10
     }), 'h\ne\nl\nl\no\nw\no\nr\nl\nd'
     );
   });
@@ -37,13 +37,13 @@ describe('head', () => {
   describe('linesCount', () => {
     it('Should give upto 2 lines', () => {
       assert.strictEqual(head('hello\nwow\nwhew', {
-        linesCount: 2, charCount: undefined
+        option: '-n', count: 2
       }), 'hello\nwow');
     });
 
     it('Should give upto 1 line when 1 line given and lineCount of 2  ', () => {
       assert.strictEqual(head('hello', {
-        linesCount: 2, charCount: undefined
+        option: '-n', count: 2
       }), 'hello');
     });
   });
@@ -51,14 +51,14 @@ describe('head', () => {
   describe('charCount', () => {
     it('Should give the given character back when count is 1', () => {
       assert.strictEqual(
-        head('h', { linesCount: 10, charCount: 1 }),
+        head('h', { option: '-c', count: 1 }),
         'h'
       );
     });
 
     it('Should give 2 characters back when count is 2', () => {
       assert.strictEqual(
-        head('he', { linesCount: 10, charCount: 2 }),
+        head('he', { option: '-c', count: 2 }),
         'he'
       );
     });

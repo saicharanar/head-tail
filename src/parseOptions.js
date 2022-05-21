@@ -1,22 +1,20 @@
-/*
-// const multiOptions = (content) => {
-//   return content.includes('-n') && content.includes('-c');
-// };
+const multiOptions = (content) => {
+  const allContent = content.toString();
+  return allContent.includes('-n') && allContent.includes('-c');
+};
 
-
-// const checkValidators = (allOptions) => {
-  //   try {
-    //     if (multiOptions(allOptions)) {
-      //       throw 'Invalid options';
-      //     }
-      //     if (allOptions.includes('--help')) {
-        //       throw 'usage';
-        //     }
-        //   } catch (error) {
-          //     throw { error: error };
-          //   }
-          // };
-          */
+const checkValidators = (content) => {
+  try {
+    if (multiOptions(content)) {
+      throw 'Invalid options';
+    }
+    if (content.includes('--help')) {
+      throw 'usage';
+    }
+  } catch (error) {
+    throw { error: error };
+  }
+};
 
 const noOptionGiven = (content) => !content.some((option) => {
   return /^-[nc]/.test(option);
@@ -69,6 +67,8 @@ const optionsObject = (option, count, files) => {
 };
 
 const parseOptions = (...content) => {
+  checkValidators(content);
+  
   if (noOptionGiven(content)) {
     return optionsObject('-n', 10, content);
   }

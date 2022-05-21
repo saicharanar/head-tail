@@ -11,7 +11,7 @@ const shouldReturn = (mockFiles, content) => {
   };
 };
 
-describe.only('headMain', () => {
+describe('headMain', () => {
   const mockedHeadMain = shouldReturn(['./a.txt', './b.txt'], 'hello');
   it('Should give back 10 lines of content as default', () => {
     assert.strictEqual(

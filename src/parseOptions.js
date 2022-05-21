@@ -68,18 +68,11 @@ const optionsObject = (option, count, files) => {
 
 const parseOptions = (...content) => {
   checkValidators(content);
-
   if (noOptionGiven(content)) {
     return optionsObject('-n', 10, content);
   }
 
-  let option, count, files;
-  try {
-    [option, count, files] = parser(content);
-  } catch (error) {
-    throw { error: 'illegal count' };
-  }
-
+  const [option, count, files] = parser(content);
   return optionsObject(option, count, files);
 };
 

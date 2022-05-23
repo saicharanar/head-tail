@@ -1,17 +1,13 @@
-const multiOptions = (content) => {
-  const allContent = content.toString();
-  return allContent.includes('-n') && allContent.includes('-c');
-};
-const checkValidators = (content) => {
+const checkValidators = (options) => {
   try {
-    if (multiOptions(content)) {
-      throw 'Invalid options';
+    if (!isFinite(options.count)) {
+      throw 'Illegal Count';
     }
-    if (content.includes('--help')) {
+    if (options.files.includes('--help')) {
       throw 'usage: head[-n lines | -c bytes][file ...]';
     }
   } catch (error) {
-    throw { 'message': error };
+    throw { message: error };
   }
 };
 

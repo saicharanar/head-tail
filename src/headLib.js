@@ -17,21 +17,25 @@ const head = (lines, { option, count }) => {
   return linesUpTo(lines, count);
 };
 
+const createHeader = (fileName) => `==> ${fileName} <==\n`;
+
 const headMain = (readFile, ...content) => {
   if (content.length === 0) {
     return 'usage: head[-n lines | -c bytes][file ...]';
   }
 
   const { files, options } = parseOptions(...content);
+  const totalFilesLength = files.length;
   return files.map((file) => {
     let fileContent = '';
     try {
       fileContent = readFile(file, 'utf8');
     } catch (error) {
-      throw { name: 'FileReadError', message: 'error reading file' };
+      return `head: error reading file ${file}`;
     }
 
-    return head(fileContent, options);
+    const header = totalFilesLength > 1 ? createHeader(file) : '';
+    return header + head(fileContent, options);
   }).join('\n\n');
 };
 

@@ -4,5 +4,5 @@ const fs = require('fs');
 try {
   console.log(headMain(fs.readFileSync, ...process.argv.slice(2)));
 } catch (error) {
-  console.error(error.message);
+  console.error(`head: ${error.message}`);
 }

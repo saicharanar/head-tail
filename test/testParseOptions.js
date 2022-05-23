@@ -57,5 +57,15 @@ describe('parseOptions', () => {
       }
     });
   });
+
+  it('Should give the -n as default key when count gave as key', () => {
+    assert.deepStrictEqual(parseOptions('-20', 'hello'), {
+      files: ['hello'],
+      options: {
+        option: '-n',
+        count: 20
+      }
+    });
+  });
 });
 

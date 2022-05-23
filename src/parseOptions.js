@@ -33,7 +33,7 @@ const getFiles = (content) => {
     return isFile(option);
   });
   if (!initialFile) {
-    return;
+    return [0];
   }
 
   const initialFileIndex = content.indexOf(initialFile);
@@ -42,7 +42,7 @@ const getFiles = (content) => {
 
 const parser = (content) => {
   const options = { '-n': 10, '-c': 0 };
-  let flag = '';
+  let flag = '-n';
 
   const [initialFileIndex, files] = getFiles(content);
   for (let index = 0; index < initialFileIndex; index++) {

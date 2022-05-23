@@ -5,7 +5,7 @@
 - [ ] Test sub functions in parseOptions
 - [ ] Implement parseOptions
 - [ ] Refactor the parse function
-
+- [ ] fix iterating over null in parse when option only specified __(head -n )__
 
 **MAYBE**
 

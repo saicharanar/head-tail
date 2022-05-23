@@ -1,4 +1,5 @@
-const usage = 'head[-n lines | -c bytes][file ...]';
+const validOptions = ['-n', '-c'];
+const usage = 'head [-n lines | -c bytes] [file ...]';
 const illegalOptionError = (option) =>
   `illegal option -- ${option}\nusage: ${usage}`;
 
@@ -9,14 +10,13 @@ const illegalCountError = (option, count) => {
 
 const checkValidators = ({ files, options }) => {
   const checkForValidOption = (option) => {
-    const validOptions = ['-n', '-c'];
     if (!validOptions.includes(option)) {
       throw illegalOptionError(option);
     }
   };
 
   try {
-    if (!isFinite(options.count)) {
+    if (!isFinite(+options.count)) {
       throw illegalCountError(options.option, options.count);
     }
     if (!files) {
@@ -34,7 +34,14 @@ const validateOptions = (content) => {
     return allContent.includes('-n') && allContent.includes('-c');
   };
 
+  const checkForValidCount = (content) => {
+    if (content.length < 2 && validOptions.includes(content[0])) {
+      throw `option requires an argument -- ${content[0][1]}\nusage: ${usage}`;
+    }
+  };
+
   try {
+    checkForValidCount(content);
     if (multiOptions(content)) {
       throw 'cant combine line and byte counts';
     }

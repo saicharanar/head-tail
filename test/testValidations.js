@@ -1,6 +1,6 @@
 const assert = require('assert');
 const { checkValidators, validateOptions } = require('../src/validations');
-const usage = 'head[-n lines | -c bytes][file ...]';
+const usage = 'head [-n lines | -c bytes] [file ...]';
 
 describe('validators', () => {
   it('Should throw error when count not provided -n ', () => {
@@ -40,6 +40,12 @@ describe('validators', () => {
   it('Should throw when both options provided', () => {
     assert.throws(() => validateOptions(['-n', '-c']), {
       message: 'cant combine line and byte counts'
+    });
+  });
+
+  it('Should throw error when count not provided -n and file ', () => {
+    assert.throws(() => validateOptions(['-n']), {
+      message: `option requires an argument -- n\nusage: ${usage}`
     });
   });
 });

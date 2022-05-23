@@ -1,9 +1,4 @@
-const { checkValidators } = require('./validations');
-
-const multiOptions = (content) => {
-  const allContent = content.toString();
-  return allContent.includes('-n') && allContent.includes('-c');
-};
+const { checkValidators, validateOptions } = require('./validations');
 
 const noOptionGiven = (content) => !content.some((option) => {
   return /^-[nc]/.test(option);
@@ -61,17 +56,15 @@ const optionsObject = (option, count, files) => {
 };
 
 const parseOptions = (...content) => {
-  // checkValidators(content);
-  if (multiOptions(content)) {
-    throw { 'message': 'cant combine line and byte counts' };
-  }
-
+  validateOptions(content);
   if (noOptionGiven(content)) {
     return optionsObject('-n', 10, content);
   }
 
   const [option, count, files] = parser(content);
-  return optionsObject(option, count, files);
+  const options = optionsObject(option, count, files);
+  checkValidators(options);
+  return options;
 };
 
 exports.parseOptions = parseOptions;

@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { parseOptions } = require('../src/parseOptions');
 
-describe('parsseOptions', () => {
+describe('parseOptions', () => {
   it('Should give the object of default values when no option given', () => {
     assert.deepStrictEqual(parseOptions(
       'hello'), {

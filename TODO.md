@@ -2,11 +2,6 @@
 
 - [ ] Implement parseOptions
 - [ ] Refactor the parse function
-  - [ ] Validate after parse
-    - [x] Report if no value given with option
-    - [x] Report if both options given
-    - [ ] Report if wrong option given
-    - [x] Report if no count is given
 
 
 **MAYBE**
@@ -16,6 +11,11 @@
 
 **DONE**
 
+- [x] Validate after parse
+  - [x] Report if no value given with option
+  - [x] Report if both options given
+  - [x] Report if wrong option given
+  - [x] Report if no count is given
 - [x] Implement `--help` option
 - [x] Return the error message instead of throwing errors.
   - [x] head --help

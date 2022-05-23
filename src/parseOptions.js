@@ -24,6 +24,9 @@ const getFiles = (content) => {
   const initialFile = content.find((option) => {
     return isFile(option);
   });
+  if (!initialFile) {
+    return;
+  }
 
   const initialFileIndex = content.indexOf(initialFile);
   return content.slice(initialFileIndex);

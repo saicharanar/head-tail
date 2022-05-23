@@ -1,9 +1,19 @@
-const checkValidators = ({ options }) => {
+const checkValidators = ({ files, options }) => {
+  const checkForValidOption = (option) => {
+    const validOptions = ['-n', '-c'];
+    if (!validOptions.includes(option)) {
+      throw 'Illegal Option';
+    }
+  };
+
   try {
     if (!isFinite(options.count)) {
       throw 'Illegal Count';
     }
-
+    if (!files) {
+      throw 'no file specified';
+    }
+    checkForValidOption(options.option);
   } catch (error) {
     throw { error: 'parseError', message: error };
   }

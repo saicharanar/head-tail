@@ -1,38 +1,39 @@
 const assert = require('assert');
 const { checkValidators, validateOptions } = require('../src/validations');
+const usage = 'head[-n lines | -c bytes][file ...]';
 
 describe('validators', () => {
   it('Should throw error when count not provided -n ', () => {
-    const options = { files: ['hello'], options: { option: '-n', count: NaN } };
+    const options = { files: ['hello'], options: { option: '-n', count: 'a' } };
     assert.throws(() => checkValidators(options), {
-      message: 'Illegal Count'
+      message: 'illegal line count -- a'
     });
   });
 
   it('Should throw error when count not provided -c', () => {
-    const options = { files: ['hello'], options: { option: '-c', count: NaN } };
+    const options = { files: ['hello'], options: { option: '-c', count: 'a' } };
     assert.throws(() => checkValidators(options), {
-      message: 'Illegal Count'
+      message: 'illegal byte count -- a'
     });
   });
 
   it('Should throw when no file specified', () => {
     const options = { files: undefined, options: { option: '-c', count: 1 } };
     assert.throws(() => checkValidators(options), {
-      message: 'no file specified'
+      message: `usage: ${usage}`
     });
   });
 
   it('Should throw when invalid option given', () => {
     const options = { files: ['hello'], options: { option: '-e', count: 10 } };
     assert.throws(() => checkValidators(options), {
-      message: 'Illegal Option'
+      message: `illegal option -- -e\nusage: ${usage}`
     });
   });
 
   it('Should throw help when help is provided', () => {
     assert.throws(() => validateOptions(['--help']), {
-      message: 'usage: head[-n lines | -c bytes][file ...]'
+      message: `usage: ${usage}`
     });
   });
 

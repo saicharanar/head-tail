@@ -8,7 +8,7 @@ describe('parseOptions', () => {
       files: ['hello'],
       options: {
         option: '-n',
-        count: 10
+        count: '10'
       }
     }
     );
@@ -20,7 +20,7 @@ describe('parseOptions', () => {
       files: ['hello', 'bye'],
       options: {
         option: '-n',
-        count: 100
+        count: '100'
       }
     }
     );
@@ -32,7 +32,7 @@ describe('parseOptions', () => {
       files: ['hello'],
       options: {
         option: '-n',
-        count: 100
+        count: '100'
       }
     }
     );
@@ -43,7 +43,7 @@ describe('parseOptions', () => {
       files: ['hello'],
       options: {
         option: '-c',
-        count: 20
+        count: '20'
       }
     });
   });
@@ -53,7 +53,7 @@ describe('parseOptions', () => {
       files: ['hello'],
       options: {
         option: '-c',
-        count: 20
+        count: '20'
       }
     });
   });
@@ -63,7 +63,7 @@ describe('parseOptions', () => {
       files: ['hello'],
       options: {
         option: '-n',
-        count: 20
+        count: '20'
       }
     });
   });

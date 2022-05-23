@@ -1,5 +1,8 @@
 **TODO**
 
+- [ ] Send the error through error stream in headLib.js
+- [ ] log the headFiles instead of returning the string
+- [ ] Test sub functions in parseOptions
 - [ ] Implement parseOptions
 - [ ] Refactor the parse function
 
@@ -11,6 +14,7 @@
 
 **DONE**
 
+- [x] Make functions for error messages.
 - [x] Validate after parse
   - [x] Report if no value given with option
   - [x] Report if both options given

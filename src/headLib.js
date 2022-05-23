@@ -12,9 +12,9 @@ const charactersUpTo = (lines, charCount) => lines.slice(0, charCount);
 
 const head = (lines, { option, count }) => {
   if (option === '-c') {
-    return charactersUpTo(lines, count);
+    return charactersUpTo(lines, +count);
   }
-  return linesUpTo(lines, count);
+  return linesUpTo(lines, +count);
 };
 
 const createHeader = (fileName) => `==> ${fileName} <==\n`;

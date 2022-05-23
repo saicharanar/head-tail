@@ -57,28 +57,5 @@ describe('parsseOptions', () => {
       }
     });
   });
-
-  it.skip('Should throw error when count not provided -n ', () => {
-    assert.throws(() => parseOptions('-n', 'hello'), {
-      error: 'illegal count'
-    });
-  });
-
-  it.skip('Should throw error when count not provided -c', () => {
-    assert.throws(() => parseOptions('-n', 'hello'), {
-      error: 'illegal count'
-    });
-  });
-
-  it('Should throw error when two options provided', () => {
-    assert.throws(() => parseOptions('-n', '-c', 'hello'), {
-      error: 'Invalid options'
-    });
-  });
-
-  it('Should throw help when help is provided', () => {
-    assert.throws(() => parseOptions('-n', '--help', 'hello'), {
-      error: 'usage'
-    });
-  });
 });
+

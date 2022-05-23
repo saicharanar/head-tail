@@ -1,21 +1,28 @@
 **TODO**
 
 - [ ] Implement parseOptions
-  - [x] Report if no value given with option
-  - [x] Report if both options given
-  - [ ] Report if wrong option given
-  - [ ] Report if no count is given
 - [ ] Refactor the parse function
+  - [ ] Validate after parse
+    - [x] Report if no value given with option
+    - [x] Report if both options given
+    - [ ] Report if wrong option given
+    - [ ] Report if no count is given
 - [ ] Implement `--help` option
-- [ ] Move the split and join to stringUtils.js
+- [ ] Return the error message instead of throwing errors.
+  - [x] head --help
+  - [ ] no count is gven
+  - [x] Bad file given
+  - [x] -n and -c are given (invalid option)
 
 
 **MAYBE**
 
 - [ ] Consider separating the tests.
+- [ ] Consider moving the split and join to stringUtils.js
 
 **DONE**
 
+- [x] Move the validations in parse to validators file.
 - [x] Write main file and test main
   - [x] make the default values in main.
   - [x] need to parse the option (if accepts)

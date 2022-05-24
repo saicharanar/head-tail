@@ -36,6 +36,13 @@
 
     * The -r option causes the input to be displayed in reverse order, by line.
 
+    * Reverse of the file if `-r only` specified
+
+    * Can be combined with `-n -c` flags
+      
+      - Performs the flag action and reverse the formatted content
+
+
 **validations**
   * `-n` and `-c` => usage: tail  [-r] [-q] [-c # | -n #] [file ...]
   
@@ -73,4 +80,3 @@
     * Can go up to any lines until the eof.
     * white spaces also considered as a character `('\n && \t')`
     * Cannot be merged with -n
-

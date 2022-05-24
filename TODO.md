@@ -1,6 +1,8 @@
 **TODO**
 
-- [ ] Reinvestigate tail for the new properties
+- [ ] introduce charactersUpto function
+- [ ] make tail accept charactersCount
+- [ ] come up with options object.
 - [ ] make 10 as default for linesCount
 - [ ] Think about the options of the object
 - [ ] handle with single file
@@ -12,6 +14,7 @@
 
 **DONE**
 
+- [x] Reinvestigate tail for the new properties
 - [x] update the new contract of tail in README.md
 - [x] make tail accept linesCount.
 - [x] Introduce linesUpto function where it takes linesCount (-n)

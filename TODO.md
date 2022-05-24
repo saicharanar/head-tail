@@ -2,10 +2,7 @@
 
 - [ ] Send the error through error stream in headLib.js
 - [ ] log the headFiles instead of returning the string
-- [ ] Test sub functions in parseOptions
-- [ ] Implement parseOptions
 - [ ] Refactor the parse function
-- [ ] fix iterating over null in parse when option only specified __(head -n )__
 
 **MAYBE**
 
@@ -14,7 +11,11 @@
 
 **DONE**
 
+- [x] move the parse sub functions to separate files.
+- [x] Test sub functions in parseOptions
+- [x] Implement parseOptions
 - [x] Make functions for error messages.
+- [x] fix iterating over null in parse when option only specified __(head -n )__
 - [x] Validate after parse
   - [x] Report if no value given with option
   - [x] Report if both options given

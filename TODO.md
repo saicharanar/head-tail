@@ -1,18 +1,16 @@
 **TODO**
 
-- [ ] Send the error through error stream in headLib.js
-- [ ] log the headFiles instead of returning the string
-- [ ] test main for logs and reading
-- [ ] Move head main to separate file
-- [ ] Refactor the parse function
-
 **MAYBE**
-
-- [ ] Consider separating the tests.
-- [ ] Consider moving the split and join to stringUtils.js
 
 **DONE**
 
+- [x] Send the error through error stream in headLib.js
+- [x] log the headFiles instead of returning the string
+- [x] test main for logs and reading
+- [x] Move head main to separate file
+- [x] ~~Refactor the parse function~~
+- [x] Consider separating the tests.
+- [x] ~~Consider moving the split and join to stringUtils.js~~
 - [x] move the parse sub functions to separate files.
 - [x] Test sub functions in parseOptions
 - [x] Implement parseOptions

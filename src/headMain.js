@@ -4,18 +4,19 @@ const { head } = require('./headLib');
 
 const createHeader = (fileName) => `==> ${fileName} <==\n`;
 const logger = (log, content) => log(content);
+const readFile = (read, file) => read(file, 'utf8');
 
-const main = (readFile, ...content) => {
-  if (content.length === 0) {
+const main = (read, args) => {
+  if (args.length === 0) {
     return 'usage: head[-n lines | -c bytes][file ...]';
   }
 
-  const { files, options } = parseOptions(...content);
+  const { files, options } = parseOptions(args);
   const totalFilesLength = files.length;
   return files.forEach((file) => {
     let fileContent = '';
     try {
-      fileContent = readFile(file, 'utf8');
+      fileContent = readFile(read, file);
     } catch (error) {
       const message = `head: ${file}: No such file or directory`;
       logger(logError, message);
@@ -28,4 +29,6 @@ const main = (readFile, ...content) => {
 };
 
 exports.main = main;
+exports.readFile = readFile;
+exports.logger = logger;
 

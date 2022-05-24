@@ -1,30 +1,34 @@
 const assert = require('assert');
-const { main } = require('../src/headMain');
+const { logger, readFile } = require('../src/headMain');
 
-const shouldReturn = (mockFiles, content) => {
-  let index = 0;
-  return function (files, encoding) {
-    assert.equal(mockFiles[index], files);
+const shouldReturn = (mockFile, content) => {
+  return function (file, encoding) {
+    assert.equal(mockFile, file);
     assert.equal(encoding, 'utf8');
-    index++;
     return content;
   };
 };
 
+const mockedReadFile = shouldReturn('./a.txt', 'hello');
+
 describe('headMain readFile', () => {
-  const mockedHeadMain = shouldReturn(['./a.txt', './b.txt'], '');
-  it('Should give back 10 lines of content as default', () => {
-    assert.strictEqual(
-      main(mockedHeadMain, './a.txt'),
-      undefined
+  it('Should give the first file to readFile', () => {
+    assert.deepStrictEqual(
+      readFile(mockedReadFile, './a.txt'),
+      'hello'
     );
   });
+});
 
-  it('Should give back 10 lines of content as default', () => {
-    assert.strictEqual(
-      main(mockedHeadMain, './b.txt'),
-      undefined
-    );
+const mockLogToScreen = (expContent) => (content) => {
+  assert.equal(content, expContent);
+  return content;
+};
+
+const mockedLog = mockLogToScreen('hello');
+describe('logger', () => {
+  it('Should log to output stream', () => {
+    assert.strictEqual(logger(mockedLog, 'hello'), 'hello');
   });
 });
 

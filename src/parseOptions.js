@@ -10,7 +10,9 @@ const parser = (content) => {
   const [initialFileIndex, files] = getFiles(content);
   for (let index = 0; index < initialFileIndex; index++) {
     if (isFlag(content[index])) {
-      const [key, value] = getKeyValuePair(content[index], content[index + 1]);
+      const [key, value] = getKeyValuePair(
+        content[index], content[index + 1]
+      );
       flag = key;
       options[key] = value;
     }
@@ -29,7 +31,7 @@ const optionsObject = (option, count, files) => {
   };
 };
 
-const parseOptions = (...content) => {
+const parseOptions = (content) => {
   validateOptions(content);
   if (noOptionGiven(content)) {
     return optionsObject('-n', '10', content);

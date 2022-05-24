@@ -24,6 +24,13 @@ describe('validators', () => {
     });
   });
 
+  it('Should throw when count is 0', () => {
+    const options = { files: ['a'], options: { option: '-n', count: 0 } };
+    assert.throws(() => checkValidators(options), {
+      message: 'illegal line count -- 0'
+    });
+  });
+
   it('Should throw when invalid option given', () => {
     const options = { files: ['hello'], options: { option: '-e', count: 10 } };
     assert.throws(() => checkValidators(options), {

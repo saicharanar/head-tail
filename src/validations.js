@@ -15,6 +15,12 @@ const checkValidators = ({ files, options }) => {
     }
   };
 
+  const checkIfCountIsZero = (option, count) => {
+    if (count === 0) {
+      throw illegalCountError(option, count);
+    }
+  };
+
   try {
     if (!isFinite(+options.count)) {
       throw illegalCountError(options.option, options.count);
@@ -23,6 +29,7 @@ const checkValidators = ({ files, options }) => {
       throw `usage: ${usage}`;
     }
     checkForValidOption(options.option);
+    checkIfCountIsZero(options.option, options.count);
   } catch (error) {
     throw { error: 'parseError', message: error };
   }

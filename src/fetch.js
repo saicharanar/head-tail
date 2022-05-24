@@ -15,7 +15,7 @@ const getKeyValuePair = (key, value) => {
   let newKey = key;
 
   if (keyContainsValue(key)) {
-    [, newKey, keyValue] = key.match(/(-[\w\d])([0-9]+)/);
+    [, newKey, keyValue] = key.match(/(-[\w])([0-9]+)/);
   }
 
   if (keyAsValue(key)) {

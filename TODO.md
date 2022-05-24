@@ -2,6 +2,8 @@
 
 - [ ] Send the error through error stream in headLib.js
 - [ ] log the headFiles instead of returning the string
+- [ ] test main for logs and reading
+- [ ] Move head main to separate file
 - [ ] Refactor the parse function
 
 **MAYBE**

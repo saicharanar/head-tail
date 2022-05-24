@@ -1,9 +1,17 @@
 **TODO**
 
+- [ ] accept lineCount.
+- [ ] make 10 as default for linesCount
+- [ ] handle with single file
+
 **MAYBE**
 
 **DONE**
 
+- [x] Update README.md for tail synopsis
+- [x] Create directory structure for tail in src and test
+- [x] make a tailLib and testTailLib
+- [x] Start with no files and no options.
 - [x] Send the error through error stream in headLib.js
 - [x] log the headFiles instead of returning the string
 - [x] test main for logs and reading

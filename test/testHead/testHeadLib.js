@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {
-  head, linesUpTo, charactersUpTo } = require('../src/headLib.js');
+  head, linesUpTo, charactersUpTo } = require('../../src/head/headLib.js');
 
 describe('head', () => {
   it('Should give the empty line back', () => {

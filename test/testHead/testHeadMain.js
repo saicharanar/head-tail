@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { logger, readFile } = require('../src/headMain');
+const { logger, readFile } = require('../../src/head/headMain');
 
 const shouldReturn = (mockFile, content) => {
   return function (file, encoding) {

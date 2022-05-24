@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { checkValidators, validateOptions } = require('../src/validations');
+const { checkValidators, validateOptions } = require('../../src/head/parseValidations');
 const usage = 'head [-n lines | -c bytes] [file ...]';
 
 describe('validators', () => {

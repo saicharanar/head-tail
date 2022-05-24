@@ -1,7 +1,7 @@
 const {
   getFiles, getKeyValuePair, isFlag, isFile, keyAsValue,
   keyContainsValue, noOptionGiven
-} = require('../src/fetch');
+} = require('../../src/head/fetch');
 const assert = require('assert');
 
 describe('getFiles', () => {

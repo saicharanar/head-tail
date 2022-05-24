@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { parseOptions } = require('../src/parseOptions');
+const { parseOptions } = require('../../src/head/parseOptions');
 
 describe('parseOptions', () => {
   it('Should give the object of default values when no option given', () => {

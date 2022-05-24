@@ -1,7 +1,7 @@
 const {
   getFiles, isFlag, getKeyValuePair, noOptionGiven
 } = require('./fetch');
-const { checkValidators, validateOptions } = require('./validations');
+const { checkValidators, validateOptions } = require('./parseValidations');
 
 const parser = (content) => {
   const options = { '-n': 10, '-c': 0 };

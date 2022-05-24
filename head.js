@@ -1,4 +1,4 @@
-const { main } = require('./src/headMain.js');
+const { main } = require('./src/head/headMain.js');
 const fs = require('fs');
 
 try {

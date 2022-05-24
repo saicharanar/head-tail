@@ -1,6 +1,6 @@
 **TODO**
-
-- [ ] accept lineCount.
+- [ ] make tail accept lineCount.
+- [ ] Introduce linesUpto function where it takes lineCount (-n)
 - [ ] make 10 as default for linesCount
 - [ ] handle with single file
 
@@ -8,6 +8,8 @@
 
 **DONE**
 
+- [x] Make tail to give upto 10 lines from last
+- [x] introduce split and join lines
 - [x] Update README.md for tail synopsis
 - [x] Create directory structure for tail in src and test
 - [x] make a tailLib and testTailLib

@@ -14,4 +14,11 @@ describe('tail', () => {
     assert.strictEqual(
       tail('h\ne\nl\nl\no\nh\ne\nl\nl\no'), 'h\ne\nl\nl\no\nh\ne\nl\nl\no');
   });
+
+  it('should give up to 10 lines back when given is > 10 ', () => {
+    assert.strictEqual(
+      tail(
+        'h\ne\nl\nl\no\nh\ne\nl\nl\no\nbye'
+      ), 'e\nl\nl\no\nh\ne\nl\nl\no\nbye');
+  });
 });

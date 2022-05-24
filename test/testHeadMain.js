@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { headMain } = require('../src/headLib');
+const { main } = require('../src/headMain');
 
 const shouldReturn = (mockFiles, content) => {
   let index = 0;
@@ -11,19 +11,20 @@ const shouldReturn = (mockFiles, content) => {
   };
 };
 
-describe('headMain', () => {
-  const mockedHeadMain = shouldReturn(['./a.txt', './b.txt'], 'hello');
+describe('headMain readFile', () => {
+  const mockedHeadMain = shouldReturn(['./a.txt', './b.txt'], '');
   it('Should give back 10 lines of content as default', () => {
     assert.strictEqual(
-      headMain(mockedHeadMain, './a.txt'),
-      'hello'
+      main(mockedHeadMain, './a.txt'),
+      undefined
     );
   });
 
   it('Should give back 10 lines of content as default', () => {
     assert.strictEqual(
-      headMain(mockedHeadMain, './b.txt'),
-      'hello'
+      main(mockedHeadMain, './b.txt'),
+      undefined
     );
   });
 });
+

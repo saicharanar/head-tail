@@ -1,6 +1,5 @@
 **TODO**
 
-- [ ] introduce charactersUpto function
 - [ ] make tail accept charactersCount
 - [ ] come up with options object.
 - [ ] make 10 as default for linesCount
@@ -11,9 +10,11 @@
 **MAYBE**
 
 - [ ] Consider changing linesUpto function in tail
+- [ ] Consider changing charactersUpto function in tail
 
 **DONE**
 
+- [x] introduce charactersUpto function
 - [x] Reinvestigate tail for the new properties
 - [x] update the new contract of tail in README.md
 - [x] make tail accept linesCount.

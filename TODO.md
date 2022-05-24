@@ -1,13 +1,15 @@
 **TODO**
-- [ ] make tail accept lineCount.
-- [ ] Introduce linesUpto function where it takes lineCount (-n)
+
 - [ ] make 10 as default for linesCount
 - [ ] handle with single file
+- [ ] make tail accepts option object which contains files and option and value
 
 **MAYBE**
 
 **DONE**
 
+- [x] make tail accept linesCount.
+- [x] Introduce linesUpto function where it takes linesCount (-n)
 - [x] Make tail to give upto 10 lines from last
 - [x] introduce split and join lines
 - [x] Update README.md for tail synopsis

@@ -5,23 +5,39 @@ const {
 
 describe('tail', () => {
   it('should give the given line back ', () => {
-    assert.strictEqual(tail('hello', -10), 'hello');
+    const options = {
+      flag: '-n',
+      count: -10
+    };
+    assert.strictEqual(tail('hello', options), 'hello');
   });
 
   it('should give two lines back ', () => {
-    assert.strictEqual(tail('hello\nbye', -10), 'hello\nbye');
+    const options = {
+      flag: '-n',
+      count: -10
+    };
+    assert.strictEqual(tail('hello\nbye', options), 'hello\nbye');
   });
 
   it('should give up to 10 lines back ', () => {
+    const options = {
+      flag: '-n',
+      count: -10
+    };
     assert.strictEqual(
-      tail('h\ne\nl\nl\no\nh\ne\nl\nl\no', -10),
+      tail('h\ne\nl\nl\no\nh\ne\nl\nl\no', options),
       'h\ne\nl\nl\no\nh\ne\nl\nl\no');
   });
 
   it('should give up to 10 lines back when given is > 10 ', () => {
+    const options = {
+      flag: '-n',
+      count: -10
+    };
     assert.strictEqual(
       tail(
-        'h\ne\nl\nl\no\nh\ne\nl\nl\no\nbye', -10
+        'h\ne\nl\nl\no\nh\ne\nl\nl\no\nbye', options
       ), 'e\nl\nl\no\nh\ne\nl\nl\no\nbye');
   });
 

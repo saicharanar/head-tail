@@ -1,11 +1,9 @@
 **TODO**
 
-- [ ] make tail accept charactersCount
-- [ ] come up with options object.
 - [ ] make 10 as default for linesCount
-- [ ] Think about the options of the object
+- [ ] make a function that can choose based on given flag
+- [ ] make tail main without fs
 - [ ] handle with single file
-- [ ] make tail accepts option object which contains files and option and value
 
 **MAYBE**
 
@@ -14,6 +12,10 @@
 
 **DONE**
 
+- [x] make tail accept charactersCount
+- [x] Think about the options of the object
+- [x] come up with options object.
+- [x] make tail accepts option object which contains files and option and value
 - [x] introduce charactersUpto function
 - [x] Reinvestigate tail for the new properties
 - [x] update the new contract of tail in README.md

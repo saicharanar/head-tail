@@ -8,8 +8,11 @@ const linesUpTo = (lines, linesCount) => {
 
 const charactersUpTo = (lines, charCount) => lines.slice(charCount);
 
-const tail = (lines, linesCount) => {
-  return linesUpTo(lines, linesCount);
+const tail = (lines, { flag, count }) => {
+  if (flag === '-c') {
+    return charactersUpTo(lines, count);
+  }
+  return linesUpTo(lines, count);
 };
 
 exports.tail = tail;

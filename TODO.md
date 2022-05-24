@@ -1,13 +1,18 @@
 **TODO**
 
+- [ ] Reinvestigate tail for the new properties
 - [ ] make 10 as default for linesCount
+- [ ] Think about the options of the object
 - [ ] handle with single file
 - [ ] make tail accepts option object which contains files and option and value
 
 **MAYBE**
 
+- [ ] Consider changing linesUpto function in tail
+
 **DONE**
 
+- [x] update the new contract of tail in README.md
 - [x] make tail accept linesCount.
 - [x] Introduce linesUpto function where it takes linesCount (-n)
 - [x] Make tail to give upto 10 lines from last

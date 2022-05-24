@@ -4,7 +4,7 @@
 
 **Usage**
 
-  usage: tail [-c # | -n #] [file ...]
+  usage: tail  [-r] [-q] [-c # | -n #] [file ...]
 
 **Synopsis**
 
@@ -27,16 +27,24 @@
   - tail -[ num ] [ files... ]
     
     * displays the `given number of lines` from end (same as -n without -n).
+  
+  - tail -q [ files... ]
+
+    * Suppresses printing of headers when multiple files are being examined.
+  
+  - tail -r [ files... ]
+
+    * The -r option causes the input to be displayed in reverse order, by line.
 
 **validations**
-  * `-n` and `-c` => usage: tail [-c # | -n #] [file ...]
+  * `-n` and `-c` => usage: tail  [-r] [-q] [-c # | -n #] [file ...]
   
   * `-n|c` with no `number` => tail: illegal offset -- ${optionValue}
 
   * `Not a valid option`  =>
 
     tail: illegal option -- a
-    usage: tail [-c # | -n #] [file ...]
+    usage: tail  [-r] [-q] [-c # | -n #] [file ...]
 
   * `Wrong value for option` => tail: illegal offset -- c
 

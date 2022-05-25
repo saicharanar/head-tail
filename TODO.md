@@ -1,12 +1,9 @@
 **TODO**
 
 - [ ] make 10 as default for linesCount
-- [ ] make a function that can choose based on given flag
-- [ ] make tail main without fs
-- [ ] handle with single file
-
-_head_
-
+- [ ] fix parser for default values
+- [ ] add the remaining options
+- [ ] test main and mock tests
 
 **MAYBE**
 
@@ -15,6 +12,9 @@ _head_
 
 **DONE**
 
+- [x] make a function that can choose based on given flag
+- [x] ~~make tail main without fs~~
+- [x] handle with single file
 - [x] fix main of head.js
 - [x] make tail accept charactersCount
 - [x] Think about the options of the object

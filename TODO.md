@@ -1,9 +1,20 @@
 **TODO**
 
+- [ ] make the parse common for both head and tail.
+
+**_tail_**
+
 - [ ] make 10 as default for linesCount
 - [ ] fix parser for default values
-- [ ] add the remaining options
 - [ ] test main and mock tests
+- [ ] fix tail.js giving one extra line
+- [ ] add the remaining options
+  - [ ] add validators and parser for the remaining options
+
+**_head_**
+
+- [ ] fix head main tests
+- [ ] fix head main and abstract functions
 
 **MAYBE**
 

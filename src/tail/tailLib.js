@@ -29,9 +29,16 @@ const tail = (lines, { operation, count, isReverse }) => {
   return charactersFrom(allLines, count);
 };
 
-const tailMain = (args) => {
-  const options = parser(args);
-  return tail('hello\nbye', options);
+const tailMain = (readFile, args) => {
+  if (args.length === 0) {
+    return 'usage: tail  [-r] [-q] [-c # | -n #] [file ...]';
+  }
+
+  const { files, options } = parser(args);
+  return files.map((file) => {
+    const fileContent = readFile(file, 'utf8');
+    return tail(fileContent, options);
+  }).join('\n');
 };
 
 exports.tail = tail;

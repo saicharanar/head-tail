@@ -14,7 +14,7 @@ const charactersFrom = (lines, charCount) => {
 
 const reverse = (lines) => {
   const allLines = splitLines(lines);
-  return joinLines(allLines).reverse();
+  return joinLines(allLines.reverse());
 };
 
 const tail = (lines, { operation, count, isReverse }) => {
@@ -31,7 +31,7 @@ const tail = (lines, { operation, count, isReverse }) => {
 
 const tailMain = (args) => {
   const options = parser(args);
-  return tail('hello', options);
+  return tail('hello\nbye', options);
 };
 
 exports.tail = tail;

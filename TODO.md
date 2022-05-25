@@ -7,7 +7,6 @@
 
 _head_
 
-- [ ] fix main of head.js
 
 **MAYBE**
 
@@ -16,6 +15,7 @@ _head_
 
 **DONE**
 
+- [x] fix main of head.js
 - [x] make tail accept charactersCount
 - [x] Think about the options of the object
 - [x] come up with options object.

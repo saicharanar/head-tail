@@ -8,7 +8,8 @@ const readFile = (read, file) => read(file, 'utf8');
 
 const main = (read, args) => {
   if (args.length === 0) {
-    return 'usage: head[-n lines | -c bytes][file ...]';
+    const message = 'usage: head[-n lines | -c bytes][file ...]';
+    logger(logError, message);
   }
 
   const { files, options } = parseOptions(args);
@@ -24,7 +25,7 @@ const main = (read, args) => {
 
     const header = totalFilesLength > 1 ? createHeader(file) : '';
     const headContent = header + head(fileContent, options);
-    logger(logOutput, `${headContent}\n`);
+    logger(logOutput, `${headContent}`);
   });
 };
 

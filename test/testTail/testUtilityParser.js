@@ -8,8 +8,51 @@ describe.only('parseArgs', () => {
       {
         files: ['hello'],
         options: {
-          operations: 'linesFrom',
-          count: -10
+          operation: 'linesFrom',
+          count: -10,
+          isReverse: false
+        }
+      }
+    );
+  });
+
+  it('Should give the object with option as -c', () => {
+    assert.deepStrictEqual(
+      parser(['-c', '10', 'hello']),
+      {
+        files: ['hello'],
+        options: {
+          operation: 'charactersFrom',
+          count: -10,
+          isReverse: false
+        }
+      }
+    );
+  });
+
+  it('Should give the object with option as -n and reverse as true', () => {
+    assert.deepStrictEqual(
+      parser(['-c', '10', '-r', 'hello']),
+      {
+        files: ['hello'],
+        options: {
+          operation: 'charactersFrom',
+          count: -10,
+          isReverse: true
+        }
+      }
+    );
+  });
+
+  it('Should give the object with option as -n and reverse as true', () => {
+    assert.deepStrictEqual(
+      parser(['-c10', '-r', 'hello']),
+      {
+        files: ['hello'],
+        options: {
+          operation: 'charactersFrom',
+          count: -10,
+          isReverse: true
         }
       }
     );

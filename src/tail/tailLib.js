@@ -1,28 +1,40 @@
+const { parser } = require('./utilityParser.js');
+
 const splitLines = (lines) => lines.split('\n');
 const joinLines = (lines) => lines.join('\n');
 
-const linesUpTo = (lines, linesCount) => {
+const linesFrom = (lines, linesCount) => {
   const allLines = splitLines(lines);
   return joinLines(allLines.slice(linesCount));
 };
 
-const charactersUpTo = (lines, charCount) => {
+const charactersFrom = (lines, charCount) => {
   return lines.slice(charCount);
 };
 
-const tail = (lines, { flag, count }) => {
-  if (flag === '-c') {
-    return charactersUpTo(lines, count);
+const reverse = (lines) => {
+  const allLines = splitLines(lines);
+  return joinLines(allLines).reverse();
+};
+
+const tail = (lines, { operation, count, isReverse }) => {
+  let allLines = lines;
+  if (isReverse) {
+    allLines = reverse(allLines);
   }
-  return linesUpTo(lines, count);
+
+  if (operation === 'linesFrom') {
+    return linesFrom(allLines, count);
+  }
+  return charactersFrom(allLines, count);
 };
 
 const tailMain = (args) => {
-  const options = parseArgs(args);
+  const options = parser(args);
   return tail('hello', options);
 };
 
 exports.tail = tail;
 exports.tailMain = tailMain;
-exports.linesUpTo = linesUpTo;
-exports.charactersUpTo = charactersUpTo;
+exports.linesUpTo = linesFrom;
+exports.charactersUpTo = charactersFrom;

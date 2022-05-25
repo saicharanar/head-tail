@@ -17,9 +17,9 @@ const parseArgs = (parseOptions, args) => {
   for (let index = 0; index < args.length; index++) {
     if (isFlag(args[index])) {
       const option = findOption(parseOptions, args[index]);
-      const parser = option.parse;
-      const [flag, flagValue] = parser(args[index], args[index + 1]);
+      const [flag, flagValue] = option.parse(args[index], args[index + 1]);
 
+      option.validator(flagsLog, option, { flag, flagValue });
       flagsLog.push(createOption(flag, flagValue));
     }
 

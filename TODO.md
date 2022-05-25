@@ -5,6 +5,10 @@
 - [ ] make tail main without fs
 - [ ] handle with single file
 
+_head_
+
+- [ ] fix main of head.js
+
 **MAYBE**
 
 - [ ] Consider changing linesUpto function in tail
@@ -23,10 +27,13 @@
 - [x] Introduce linesUpto function where it takes linesCount (-n)
 - [x] Make tail to give upto 10 lines from last
 - [x] introduce split and join lines
-- [x] Update README.md for tail synopsis
 - [x] Create directory structure for tail in src and test
 - [x] make a tailLib and testTailLib
 - [x] Start with no files and no options.
+- [x] Update README.md for tail synopsis
+
+**___ Head Pending__**
+
 - [x] Send the error through error stream in headLib.js
 - [x] log the headFiles instead of returning the string
 - [x] test main for logs and reading

@@ -6,7 +6,9 @@ const linesUpTo = (lines, linesCount) => {
   return joinLines(allLines.slice(linesCount));
 };
 
-const charactersUpTo = (lines, charCount) => lines.slice(charCount);
+const charactersUpTo = (lines, charCount) => {
+  return lines.slice(charCount);
+};
 
 const tail = (lines, { flag, count }) => {
   if (flag === '-c') {
@@ -15,6 +17,12 @@ const tail = (lines, { flag, count }) => {
   return linesUpTo(lines, count);
 };
 
+const tailMain = (args) => {
+  const options = parseArgs(args);
+  return tail('hello', options);
+};
+
 exports.tail = tail;
+exports.tailMain = tailMain;
 exports.linesUpTo = linesUpTo;
 exports.charactersUpTo = charactersUpTo;

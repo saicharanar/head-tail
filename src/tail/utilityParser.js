@@ -86,20 +86,32 @@ const isReverseSet = (options) => options.find((option) => {
   return option.flag === '-r';
 });
 
+const getNonRecursiveFlag = (options) => {
+  return options.find((option) => option.flag !== '-r');
+};
+
 const createOptions = (options, files) => {
+  const option = getNonRecursiveFlag(options);
   return {
     files: files,
     options: {
-      operation: operations[options[0].flag],
-      count: modValue(options[0].flag, options[0].value),
+      operation: operations[option.flag],
+      count: modValue(option.flag, option.value),
       isReverse: isReverseSet(options) ? true : false
     }
   };
 };
 
+const makeDefaultIfNoOption = (options) => {
+  if (options.length === 0) {
+    return [{ flag: '-n', value: '10' }];
+  }
+  return options;
+};
+
 const parser = (args) => {
   const [options, files] = parseArgs(parseOptions, args);
-  return createOptions(options, files);
+  return createOptions(makeDefaultIfNoOption(options), files);
 };
 
 exports.parser = parser;

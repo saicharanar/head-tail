@@ -6,7 +6,7 @@ const {
 describe('tail', () => {
   it('should give the given line back ', () => {
     const options = {
-      flag: '-n',
+      operation: 'linesFrom',
       count: -10
     };
     assert.strictEqual(tail('hello', options), 'hello');
@@ -14,7 +14,7 @@ describe('tail', () => {
 
   it('should give two lines back ', () => {
     const options = {
-      flag: '-n',
+      operation: 'linesFrom',
       count: -10
     };
     assert.strictEqual(tail('hello\nbye', options), 'hello\nbye');
@@ -22,7 +22,7 @@ describe('tail', () => {
 
   it('should give up to 10 lines back ', () => {
     const options = {
-      flag: '-n',
+      operation: 'linesFrom',
       count: -10
     };
     assert.strictEqual(
@@ -32,7 +32,7 @@ describe('tail', () => {
 
   it('should give up to 10 lines back when given is > 10 ', () => {
     const options = {
-      flag: '-n',
+      operation: 'linesFrom',
       count: -10
     };
     assert.strictEqual(

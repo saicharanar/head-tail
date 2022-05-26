@@ -1,7 +1,7 @@
 const assert = require('assert');
 const { parser } = require('../../src/tail/utilityParser');
 
-describe.only('parseArgs', () => {
+describe('parseArgs', () => {
   it('Should give the object with option as -n', () => {
     assert.deepStrictEqual(
       parser(['-n', '10', 'hello']),

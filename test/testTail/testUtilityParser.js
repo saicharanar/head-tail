@@ -44,7 +44,7 @@ describe('parseArgs', () => {
     );
   });
 
-  it('Should give the object with option as -n and reverse as true', () => {
+  it('Should give the object with option as -c and reverse as true', () => {
     assert.deepStrictEqual(
       parser(['-c10', '-r', 'hello']),
       {

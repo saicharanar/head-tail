@@ -1,4 +1,3 @@
-const isFile = (arg) => !(isFlag(arg) || isFinite(+arg[0]));
 const isFlag = (arg) => arg.startsWith('-');
 
 const findOption = (parseOptions, currentFlag) =>
@@ -12,23 +11,19 @@ const createOption = (flag, value) => {
 };
 
 const parseArgs = (parseOptions, args) => {
-  const flagsLog = [], filesLog = [];
+  const flagsLog = [];
+  let index = 0;
 
-  for (let index = 0; index < args.length; index++) {
-    if (isFlag(args[index])) {
-      const option = findOption(parseOptions, args[index]);
-      const [flag, flagValue] = option.parse(args[index], args[index + 1]);
+  while (isFlag(args[index])) {
+    const option = findOption(parseOptions, args[index]);
+    const [flag, flagValue] = option.parse(args[index], args[index + 1]);
 
-      option.validator(flagsLog, option, { flag, flagValue });
-      flagsLog.push(createOption(flag, flagValue));
-    }
-
-    if (isFile(args[index])) {
-      filesLog.push(args[index]);
-    }
+    option.validator(flagsLog, option, { flag, flagValue });
+    flagsLog.push(createOption(flag, flagValue));
+    index += isFinite(args[index + 1]) ? 2 : 1;
   }
 
-  return [flagsLog, filesLog];
+  return [flagsLog, args.slice(index)];
 };
 
 exports.parseArgs = parseArgs;

@@ -78,7 +78,6 @@ const modValue = (option, value) => {
   if (positiveFlags.includes(option)) {
     return +value;
   }
-
   return -(+value);
 };
 

@@ -1,5 +1,8 @@
 const assert = require('assert');
-const { checkValidators, validateOptions } = require('../../src/head/parseValidations');
+const {
+  checkValidators,
+  validateOptions
+} = require('../../src/head/parseValidations');
 const usage = 'head [-n lines | -c bytes] [file ...]';
 
 describe('validators', () => {
@@ -35,12 +38,6 @@ describe('validators', () => {
     const options = { files: ['hello'], options: { option: '-e', count: 10 } };
     assert.throws(() => checkValidators(options), {
       message: `illegal option -- -e\nusage: ${usage}`
-    });
-  });
-
-  it('Should throw help when help is provided', () => {
-    assert.throws(() => validateOptions(['--help']), {
-      message: `usage: ${usage}`
     });
   });
 

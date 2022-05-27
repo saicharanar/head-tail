@@ -41,6 +41,12 @@ const validateOptions = (content) => {
     return allContent.includes('-n') && allContent.includes('-c');
   };
 
+  const checkForMultiOptions = (args) => {
+    if (multiOptions(args)) {
+      throw 'cant combine line and byte counts';
+    }
+  };
+
   const checkForValidCount = (content) => {
     if (content.length < 2 && validOptions.includes(content[0])) {
       throw `option requires an argument -- ${content[0][1]}\nusage: ${usage}`;
@@ -48,13 +54,11 @@ const validateOptions = (content) => {
   };
 
   try {
-    checkForValidCount(content);
-    if (multiOptions(content)) {
-      throw 'cant combine line and byte counts';
-    }
-    if (content.includes('--help')) {
+    if (content.length === 0) {
       throw `usage: ${usage}`;
     }
+    checkForValidCount(content);
+    checkForMultiOptions(content);
   } catch (error) {
     throw { message: error };
   }

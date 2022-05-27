@@ -7,15 +7,10 @@ const logger = (log, content) => log(content);
 const readFile = (read, file) => read(file, 'utf8');
 
 const main = (read, args) => {
-  if (args.length === 0) {
-    const message = 'usage: head[-n lines | -c bytes][file ...]';
-    logger(logError, message);
-  }
-
   const { files, options } = parseOptions(args);
   const totalFilesLength = files.length;
+  let fileContent = '';
   return files.forEach((file) => {
-    let fileContent = '';
     try {
       fileContent = readFile(read, file);
     } catch (error) {

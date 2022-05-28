@@ -11,7 +11,7 @@ const shouldReturn = (mockFile, content) => {
 
 const mockedReadFile = shouldReturn('./a.txt', 'hello');
 
-describe('headMain readFile', () => {
+describe.only('headMain readFile', () => {
   it('Should give the first file to readFile', () => {
     assert.deepStrictEqual(
       readFile(mockedReadFile, './a.txt'),

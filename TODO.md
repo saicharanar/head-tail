@@ -42,14 +42,19 @@
 
   * **TODO**
 
+    - [ ] use another try catch block to catch type error
     - [ ] fix head main tests
-    - [ ] fix head main and abstract functions
 
   * **MAYBE**
 
 
   * **DONE**
 
+    - [x] move the try catch block to readFile
+    - [x] move the require of console to head.js
+    - [x] ~~make the creation of head in printContent~~
+    - [x] ~~make `displayWithHeader` and `displayWithoutHeader`~~
+    - [x] fix head main and abstract functions
     - [x] Send the error through error stream in headLib.js
     - [x] log the headFiles instead of returning the string
     - [x] test main for logs and reading

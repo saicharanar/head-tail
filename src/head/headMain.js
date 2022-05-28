@@ -1,30 +1,53 @@
 const { parseOptions } = require('./parseOptions.js');
-const { error: logError, log: logOutput } = require('console');
 const { head } = require('./headLib');
 
 const createHeader = (fileName) => `==> ${fileName} <==\n`;
-const logger = (log, content) => log(content);
-const readFile = (read, file) => read(file, 'utf8');
+const readFile = (read, file) => {
+  try {
+    return read(file, 'utf8');
+  } catch (error) {
+    throw error.code;
+  }
+};
 
-const main = (read, args) => {
+const getFileContent = (read, file) => {
+  try {
+    const fileContent = readFile(read, file);
+    return { fileName: file, content: fileContent };
+  } catch (error) {
+    return { fileName: file, content: '', error };
+  }
+};
+
+const identity = (fileContent, { stdOut, stdError }) => {
+  if (fileContent.error) {
+    stdError(fileContent.error);
+    return;
+  }
+  stdOut(fileContent.content);
+};
+
+const formatContent = (fileContent, { stdOut, stdError }) => {
+  if (fileContent.error) {
+    stdError(fileContent.error);
+    return;
+  }
+  stdOut(createHeader(fileContent.fileName), fileContent.content);
+};
+
+const getFormatter = (length) => length === 1 ? identity : formatContent;
+
+const main = (read, stdOut, stdError, args) => {
   const { files, options } = parseOptions(args);
   const totalFilesLength = files.length;
-  let fileContent = '';
-  return files.forEach((file) => {
-    try {
-      fileContent = readFile(read, file);
-    } catch (error) {
-      const message = `head: ${file}: No such file or directory`;
-      logger(logError, message);
-    }
+  const formatter = getFormatter(totalFilesLength);
 
-    const header = totalFilesLength > 1 ? createHeader(file) : '';
-    const headContent = header + head(fileContent, options);
-    logger(logOutput, `${headContent}`);
-  });
+  for (const file of files) {
+    const fileContent = getFileContent(read, file);
+    fileContent.content = head(fileContent.content, options);
+    formatter(fileContent, { stdOut, stdError });
+  }
 };
 
 exports.main = main;
 exports.readFile = readFile;
-exports.logger = logger;
-

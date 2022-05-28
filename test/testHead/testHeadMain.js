@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {
-  readFile, getFileProp
+  readFile, getFileProp, createHeader, formatContent
 } = require('../../src/head/headMain');
 
 const mockReadFile = (mockFile, content) => {
@@ -18,7 +18,7 @@ const mockGetFilePropNoError = (mockFile, content) => {
   };
 };
 
-const mockGetFilePropWithError = (mockFile, content) => {
+const mockGetFilePropWithError = (mockFile) => {
   return function (file) {
     assert.equal(mockFile, file);
     throw { code: 1 };
@@ -49,6 +49,22 @@ describe.only('headMain', () => {
       assert.deepStrictEqual(
         getFileProp(mockedGetFilePropWithError, 'a.txt'),
         { fileName: 'a.txt', content: '', error: 1 }
+      );
+    });
+  });
+
+  describe('createHeader', () => {
+    it('Should make the header of give fileString', () => {
+      assert.strictEqual(createHeader('hello'), '==> hello <==\n');
+      assert.strictEqual(createHeader('1'), '==> 1 <==\n');
+    });
+  });
+
+  describe('formatContent', () => {
+    it('Should given header and content', () => {
+      assert.strictEqual(
+        formatContent({ fileName: 'hello', content: 'helloWorld' }),
+        '==> hello <==\nhelloWorld'
       );
     });
   });

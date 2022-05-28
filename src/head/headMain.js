@@ -1,4 +1,4 @@
-const { parseOptions } = require('./parseOptions.js');
+const { parser } = require('./utilityParser.js');
 const { head } = require('./headLib');
 
 const createHeader = (fileName) => `==> ${fileName} <==\n`;
@@ -31,13 +31,14 @@ const getFormatter = (length) => length === 1 ? identity : formatContent;
 const display = (file, { stdOut, stdError }) => {
   if (file.error) {
     stdError(file.error);
+    return;
   }
 
   stdOut(file.content);
 };
 
 const main = (read, stdOut, stdError, args) => {
-  const { files, options } = parseOptions(args);
+  const { files, options } = parser(args);
   const formatter = getFormatter(files.length);
 
   for (const file of files) {

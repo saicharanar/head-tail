@@ -1,12 +1,9 @@
-const { parseArgs } = require('../parseArgs.js');
+const { parseArgs } = require('../parseArgs');
+const USAGE = 'head: head [-n lines | -c bytes] [file ...]';
 
-const USAGE = 'usage: tail  [-r] [-q] [-c # | -n #] [file ...]';
-
-const illegalOffsetError = (value) => {
-  return {
-    error: 'parseError',
-    message: `illegal offset -- ${value}`
-  };
+const illegalCountError = (option, count) => {
+  const operation = option === '-n' ? 'line' : 'byte';
+  return `illegal ${operation} count -- ${count}`;
 };
 
 const assertOption = (flags, properties, option) => {
@@ -17,7 +14,7 @@ const assertOption = (flags, properties, option) => {
   }
 
   if (!isFinite(+option.flagValue)) {
-    throw illegalOffsetError(option.flagValue);
+    throw illegalCountError(option.flagValue);
   }
 };
 
@@ -40,63 +37,28 @@ const flagValueParser = (flag, flagValue) => {
   return [newFlag, newValue];
 };
 
-const reverseParser = () => {
-  return ['-r'];
-};
-
-const reverseValidator = () => {
-};
-
 const parseOptions = [
   {
     flag: '-n',
     parse: flagValueParser,
-    disallowedFlags: ['-c'],
-    validator: assertOption
+    validator: assertOption,
+    disallowedFlags: ['-c']
   },
   {
     flag: '-c',
     parse: flagValueParser,
-    disallowedFlags: ['-n'],
-    validator: assertOption
-  },
-  {
-    flag: '-r',
-    parse: reverseParser,
-    validator: reverseValidator
+    validator: assertOption,
+    disallowedFlags: ['-n']
   }
 ];
 
-const operations = {
-  '-n': 'linesFrom',
-  '-c': 'charactersFrom'
-};
-
-const modValue = (option, value) => {
-  const positiveFlags = ['+'];
-
-  if (positiveFlags.includes(option)) {
-    return +value;
-  }
-  return -(+value);
-};
-
-const isReverseSet = (options) => options.find((option) => {
-  return option.flag === '-r';
-});
-
-const getNonRecursiveFlag = (options) => {
-  return options.find((option) => option.flag !== '-r');
-};
-
 const createOptions = (options, files) => {
-  const option = getNonRecursiveFlag(options);
+  const option = options[options.length - 1];
   return {
     files: files,
     options: {
-      operation: operations[option.flag],
-      count: modValue(option.flag, option.value),
-      isReverse: isReverseSet(options) ? true : false
+      option: option.flag,
+      count: +option.value,
     }
   };
 };

@@ -51,3 +51,4 @@ const main = (read, stdOut, stdError, args) => {
 
 exports.main = main;
 exports.readFile = readFile;
+exports.getFileProp = getFileProp;

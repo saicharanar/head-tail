@@ -2,6 +2,7 @@ const { parseOptions } = require('./parseOptions.js');
 const { head } = require('./headLib');
 
 const createHeader = (fileName) => `==> ${fileName} <==\n`;
+
 const readFile = (read, file) => {
   try {
     return read(file, 'utf8');
@@ -10,7 +11,7 @@ const readFile = (read, file) => {
   }
 };
 
-const getFileContent = (read, file) => {
+const getFileProp = (read, file) => {
   try {
     const fileContent = readFile(read, file);
     return { fileName: file, content: fileContent };
@@ -19,33 +20,31 @@ const getFileContent = (read, file) => {
   }
 };
 
-const identity = (fileContent, { stdOut, stdError }) => {
-  if (fileContent.error) {
-    stdError(fileContent.error);
-    return;
-  }
-  stdOut(fileContent.content);
-};
+const identity = ({ content }) => content;
 
-const formatContent = (fileContent, { stdOut, stdError }) => {
-  if (fileContent.error) {
-    stdError(fileContent.error);
-    return;
-  }
-  stdOut(createHeader(fileContent.fileName), fileContent.content);
+const formatContent = ({ fileName, content }) => {
+  return createHeader(fileName) + content;
 };
 
 const getFormatter = (length) => length === 1 ? identity : formatContent;
 
+const display = (file, { stdOut, stdError }) => {
+  if (file.error) {
+    stdError(file.error);
+  }
+
+  stdOut(file.content);
+};
+
 const main = (read, stdOut, stdError, args) => {
   const { files, options } = parseOptions(args);
-  const totalFilesLength = files.length;
-  const formatter = getFormatter(totalFilesLength);
+  const formatter = getFormatter(files.length);
 
   for (const file of files) {
-    const fileContent = getFileContent(read, file);
-    fileContent.content = head(fileContent.content, options);
-    formatter(fileContent, { stdOut, stdError });
+    const fileProp = getFileProp(read, file);
+    fileProp.content = head(fileProp.content, options);
+    fileProp.content = formatter(fileProp);
+    display(fileProp, { stdOut, stdError });
   }
 };
 

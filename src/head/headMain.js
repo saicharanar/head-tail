@@ -28,7 +28,7 @@ const formatContent = ({ fileName, content }) => {
 
 const getFormatter = (length) => length === 1 ? identity : formatContent;
 
-const display = (file, { stdOut, stdError }) => {
+const display = (file, stdOut, stdError) => {
   if (file.error) {
     stdError(file.error);
     return;
@@ -45,7 +45,7 @@ const main = (read, stdOut, stdError, args) => {
     const fileProp = getFileProp(read, file);
     fileProp.content = head(fileProp.content, options);
     fileProp.content = formatter(fileProp);
-    display(fileProp, { stdOut, stdError });
+    display(fileProp, stdOut, stdError);
   }
 };
 
@@ -54,3 +54,4 @@ exports.readFile = readFile;
 exports.getFileProp = getFileProp;
 exports.createHeader = createHeader;
 exports.formatContent = formatContent;
+exports.display = display;

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {
-  readFile, getFileProp, createHeader, formatContent
+  readFile, getFileProp, createHeader, formatContent, display
 } = require('../../src/head/headMain');
 
 const mockReadFile = (mockFile, content) => {
@@ -22,6 +22,12 @@ const mockGetFilePropWithError = (mockFile) => {
   return function (file) {
     assert.equal(mockFile, file);
     throw { code: 1 };
+  };
+};
+
+const mockDisplayNoError = (mockFile) => {
+  return function ({ content }) {
+    assert.equal(mockFile.content, content);
   };
 };
 
@@ -68,4 +74,14 @@ describe.only('headMain', () => {
       );
     });
   });
+
+  const mockedDisplayNoError = mockDisplayNoError('hello');
+  describe('display', () => {
+    it('Should display on stdOutStream', () => {
+      assert.strictEqual(
+        display({ content: 'hello' }, mockedDisplayNoError), undefined
+      );
+    });
+  });
+
 });  
